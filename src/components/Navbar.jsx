@@ -11,7 +11,7 @@ function Navbar() {
 
   unique_category = [...new Set(unique_category)] 
   
-  console.log(unique_category)
+  // console.log(unique_category)
 
   const randomColor = () => {
     return `rgba(${(Math.random()*255)}, ${(Math.random()*255)}, ${(Math.random()*255)}, 0.4)`

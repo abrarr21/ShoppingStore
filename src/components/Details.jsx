@@ -10,7 +10,7 @@ function Details() {
   const getsingleProduct = async () => {
     try {
       const {data} = await axios.get(`/products/${id}`)
-      console.log(id)
+      // console.log(id)
       setProducts(data)
     } catch (error) {
       console.log(error)
