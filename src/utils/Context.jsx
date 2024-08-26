@@ -5,7 +5,7 @@ export const productContext = createContext()
 
 function Context( props ) {
     
-    const [products, setProducts] = useState(null)
+    const [products, setProducts] = useState(JSON.parse(localStorage.getItem("products")) || null);
 
     const getdata = async () => {
         try {
@@ -16,6 +16,7 @@ function Context( props ) {
             console.error(error)
         }
     }
+    console.log(products)
 
     useEffect(() => {
         getdata();

@@ -1,6 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
+import { productContext } from '../utils/Context'
+import { nanoid } from 'nanoid'
+import { useNavigate } from 'react-router-dom'
 
 function Create() {
+
+    const [products, setProducts] = useContext(productContext)
+    const navigate = useNavigate()
 
     const [image, setImage] = useState("")
     const [title, setTitle] = useState("")
@@ -10,10 +16,20 @@ function Create() {
 
     const addProductHandler = (e) => {
         e.preventDefault();
+
+        if(title.trim().length < 5 || image.trim().length < 5 || category.trim().length < 5 || price.trim().length < 5 || description.trim().length < 5 ){
+
+            alert("Every field should be filled")
+            return;
+        } 
+
         const product = {
-            title, image, price, category, description
+            id: nanoid(), title, image, price, category, description
         }
         // console.log(product)
+        setProducts([...products, product])
+        localStorage.setItem("Products", JSON.stringify([...products, product]))
+        navigate('/')
     }
 
   return (
